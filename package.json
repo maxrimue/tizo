@@ -1,0 +1,42 @@
+{
+	"name": "tizo",
+	"version": "0.0.0",
+	"description": "easily parse a string including time and a timezone",
+	"license": "MIT",
+	"repository": "maxrimue/tizo",
+	"author": {
+		"name": "maxrimue",
+		"email": "max.rittmueller@gmail.com",
+		"url": "https://github.com/maxrimue"
+	},
+	"engines": {
+		"node": ">=4"
+	},
+	"scripts": {
+		"test": "xo && ava"
+	},
+	"files": [
+		"index.js",
+		"timezones.js"
+	],
+	"keywords": [
+		"timezone",
+		"converter",
+		"convert",
+		"get",
+		"local",
+		"time",
+		"utc",
+		"gmt",
+		"time zone"
+	],
+	"dependencies": {},
+	"devDependencies": {
+		"ava": "^0.25.0",
+		"eslint-config-prettier": "^2.9.0",
+		"xo": "^0.20.3"
+	},
+	"xo": {
+		"extends": "eslint-config-prettier"
+	}
+}
