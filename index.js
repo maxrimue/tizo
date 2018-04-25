@@ -1,5 +1,5 @@
-"use strict";
-const timezones = require("./timezones.js");
+'use strict';
+const timezones = require('./timezones.js');
 
 // Get Date()'s local offset and
 // translate Date()'s answer from minutes
@@ -30,10 +30,10 @@ function applyOffset(obj, offset) {
 class Time {
 	constructor(input) {
 		switch (input.amOrPm) {
-			case "am":
+			case 'am':
 				this.hours = input.hours;
 				break;
-			case "pm":
+			case 'pm':
 				this.hours = input.hours + 12;
 				break;
 			default:
@@ -70,7 +70,7 @@ class Time {
 }
 
 module.exports = input => {
-	if (typeof input !== "string") {
+	if (typeof input !== 'string') {
 		throw new TypeError(`Expected a string, got ${typeof input}`);
 	}
 
@@ -82,7 +82,7 @@ module.exports = input => {
 		hours: Number(formattedInputArr[1]),
 		minutes: Number(formattedInputArr[2] || 0),
 		amOrPm: formattedInputArr[3],
-		timezone: formattedInputArr[4]
+		timezone: formattedInputArr[4],
 	};
 
 	return new Time(formattedInput);
