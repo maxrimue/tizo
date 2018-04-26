@@ -64,33 +64,16 @@ class Time {
 		);
 	}
 
-	respond(result) {
-		if (Number.isNaN(result[0])) {
-			return new Error('Unrecognised time');
-		}
-
-		return result;
-	}
-
 	get original() {
-		return this.respond([
-			this.timeObject.getHours(),
-			this.timeObject.getMinutes(),
-		]);
+		return [this.timeObject.getHours(), this.timeObject.getMinutes()];
 	}
 
 	get utc() {
-		return this.respond([
-			this.timeObjectUTC.getHours(),
-			this.timeObjectUTC.getMinutes(),
-		]);
+		return [this.timeObjectUTC.getHours(), this.timeObjectUTC.getMinutes()];
 	}
 
 	get local() {
-		return this.respond([
-			this.timeObjectLocal.getHours(),
-			this.timeObjectLocal.getMinutes(),
-		]);
+		return [this.timeObjectLocal.getHours(), this.timeObjectLocal.getMinutes()];
 	}
 
 	get timezones() {
@@ -113,6 +96,13 @@ module.exports = input => {
 		amOrPm: formattedInputArr[3],
 		timezone: formattedInputArr[4] || 'utc',
 	};
+
+	if (
+		Number.isNaN(formattedInput.hours) ||
+		Number.isNaN(formattedInput.minutes)
+	) {
+		return new Error('Unrecognised time');
+	}
 
 	return new Time(formattedInput);
 };

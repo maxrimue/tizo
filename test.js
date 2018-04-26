@@ -45,7 +45,7 @@ test('wrong arg', t => {
 
 test('throw if unrecognised', t => {
 	const res = tizo('');
-	t.is(res, 'Unrecognised time');
+	t.deepEqual(res, new Error('Unrecognised time'));
 });
 
 test('am/pm', t => {
