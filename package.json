@@ -15,7 +15,10 @@
 	"scripts": {
 		"test": "xo && ava"
 	},
-	"files": ["index.js", "timezones.js"],
+	"files": [
+		"index.js",
+		"timezones.js"
+	],
 	"keywords": [
 		"timezone",
 		"converter",
