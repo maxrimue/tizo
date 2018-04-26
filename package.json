@@ -1,6 +1,6 @@
 {
 	"name": "tizo",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "easily parse a string including time and a timezone",
 	"license": "MIT",
 	"repository": "maxrimue/tizo",
