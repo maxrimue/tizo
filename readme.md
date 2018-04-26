@@ -61,6 +61,13 @@ Type: `array`
 
 Local time in `[ hours, minutes ]`
 
+#### timezones
+
+Type: `object`
+
+List of supported timezones in `<timezone>: <offset>`
+(Note: `<offset>` can either be a string or an array, depending on whether the offset is a fixed amount of hours or also includes minutes, like ACDT (+9:30))
+
 ## Related
 
 * [tizo-cli](https://github.com/maxrimue/tizo-cli) - CLI version of this module

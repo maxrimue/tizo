@@ -64,16 +64,37 @@ class Time {
 		);
 	}
 
+	respond(result) {
+		if (Number.isNaN(result[0])) {
+			return new Error('Unrecognised time');
+		}
+
+		return result;
+	}
+
 	get original() {
-		return [this.timeObject.getHours(), this.timeObject.getMinutes()];
+		return this.respond([
+			this.timeObject.getHours(),
+			this.timeObject.getMinutes(),
+		]);
 	}
 
 	get utc() {
-		return [this.timeObjectUTC.getHours(), this.timeObjectUTC.getMinutes()];
+		return this.respond([
+			this.timeObjectUTC.getHours(),
+			this.timeObjectUTC.getMinutes(),
+		]);
 	}
 
 	get local() {
-		return [this.timeObjectLocal.getHours(), this.timeObjectLocal.getMinutes()];
+		return this.respond([
+			this.timeObjectLocal.getHours(),
+			this.timeObjectLocal.getMinutes(),
+		]);
+	}
+
+	get timezones() {
+		return timezones;
 	}
 }
 
