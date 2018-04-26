@@ -29,6 +29,11 @@ test('complicated timezones', t => {
 	t.deepEqual(res.utc, [15, 45]);
 });
 
+test('no timezone', t => {
+	const res = tizo('2:15');
+	t.deepEqual(res.utc, [2, 15]);
+});
+
 test('weird format', t => {
 	const res = tizo(' dfae:§ 04 30 pM pDt ssss');
 	t.deepEqual(res.utc, [23, 30]);

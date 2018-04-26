@@ -1,5 +1,6 @@
 module.exports = {
 	// Europe
+	utc: '0',
 	gmt: '0',
 	bst: '+1',
 	ist: '+1',

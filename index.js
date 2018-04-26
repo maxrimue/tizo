@@ -82,7 +82,7 @@ module.exports = input => {
 		hours: Number(formattedInputArr[1]),
 		minutes: Number(formattedInputArr[2] || 0),
 		amOrPm: formattedInputArr[3],
-		timezone: formattedInputArr[4],
+		timezone: formattedInputArr[4] || 'utc',
 	};
 
 	return new Time(formattedInput);
