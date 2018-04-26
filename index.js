@@ -31,10 +31,18 @@ class Time {
 	constructor(input) {
 		switch (input.amOrPm) {
 			case 'am':
-				this.hours = input.hours;
+				if (Number(input.hours) === 12) {
+					this.hours = 0;
+				} else {
+					this.hours = input.hours;
+				}
 				break;
 			case 'pm':
-				this.hours = input.hours + 12;
+				if (Number(input.hours) === 12) {
+					this.hours = 12;
+				} else {
+					this.hours = input.hours + 12;
+				}
 				break;
 			default:
 				this.hours = input.hours;

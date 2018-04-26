@@ -42,3 +42,14 @@ test('weird format', t => {
 test('wrong arg', t => {
 	t.throws(() => tizo(['lol']));
 });
+
+test('am/pm', t => {
+	const res1 = tizo('11am');
+	t.deepEqual(res1.utc, [11, 0]);
+	const res2 = tizo('12am');
+	t.deepEqual(res2.utc, [0, 0]);
+	const res3 = tizo('11pm');
+	t.deepEqual(res3.utc, [23, 0]);
+	const res4 = tizo('12pm');
+	t.deepEqual(res4.utc, [12, 0]);
+});
