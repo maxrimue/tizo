@@ -1,4 +1,4 @@
-# tizo [![Build Status](https://travis-ci.org/maxrimue/tizo.svg?branch=master)](https://travis-ci.org/maxrimue/tizo)
+# tizo [![Build Status](https://travis-ci.org/maxrimue/tizo.svg?branch=master)](https://travis-ci.org/maxrimue/tizo) [![Greenkeeper badge](https://badges.greenkeeper.io/maxrimue/tizo.svg)](https://greenkeeper.io/)
 
 > convert a string with hours to any timezone
 
