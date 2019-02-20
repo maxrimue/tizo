@@ -36,6 +36,7 @@ class Time {
 				} else {
 					this.hours = input.hours;
 				}
+
 				break;
 			case 'pm':
 				if (Number(input.hours) === 12) {
@@ -43,6 +44,7 @@ class Time {
 				} else {
 					this.hours = input.hours + 12;
 				}
+
 				break;
 			default:
 				this.hours = input.hours;
