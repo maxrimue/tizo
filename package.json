@@ -10,7 +10,7 @@
 		"url": "https://github.com/maxrimue"
 	},
 	"engines": {
-		"node": ">=4"
+		"node": ">=6"
 	},
 	"scripts": {
 		"test": "prettier --check **/*.js && xo && ava"
