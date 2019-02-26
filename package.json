@@ -1,5 +1,6 @@
 {
   "name": "tizo",
+  "main": "out/index.js",
   "version": "1.1.0",
   "description": "easily parse a string including time and a timezone",
   "license": "MIT",
@@ -13,12 +14,14 @@
     "node": ">=6"
   },
   "scripts": {
-    "prettier-fix": "prettier --write **/*.js",
-    "test": "prettier --check **/*.js && xo && ava"
+    "prettier-fix": "prettier --write **/*.ts",
+    "test": "prettier --check **/*.ts && tsc && ava out/test.js",
+    "build": "tsc",
+    "prepublish": "tsc"
   },
   "files": [
-    "index.js",
-    "timezones.js"
+    "out/index.js",
+    "out/timezones.js"
   ],
   "keywords": [
     "timezone",
@@ -35,9 +38,6 @@
   "devDependencies": {
     "ava": "^1.1.0",
     "prettier": "^1.16.4",
-    "xo": "^0.24.0"
-  },
-  "xo": {
-    "prettier": true
+    "typescript": "^3.3.3333"
   }
 }
