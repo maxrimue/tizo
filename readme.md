@@ -11,23 +11,23 @@ $ npm install tizo
 ## Usage
 
 ```js
-const tizo = require('tizo');
+const tizo = require("tizo");
 
-tizo('19:30 CEST').utc;
+tizo("19:30 CEST").utc;
 // → '[ 17, 30 ]'
 
-tizo('9pm').original;
+tizo("9pm").original;
 // → '[ 21, 0 ]'
 
-tizo('08:21').local;
+tizo("08:21").local;
 // → '[ 8 + local offset, 21 + local offset ]'
 ```
 
-* supports many different, popular timezones, including summer/winter adaptions
-* automatically parses 'am' and 'pm' for time formatting
-* doesn't require internet connection for any lookup
-* flexible formatting (eg `sss01:02 aM CesT sss` → `[1, 2, 'am', 'cest']`)
-* returns local, utc (gmt) and parsed time
+- supports many different, popular timezones, including summer/winter adaptions
+- automatically parses 'am' and 'pm' for time formatting
+- doesn't require internet connection for any lookup
+- flexible formatting (eg `sss01:02 aM CesT sss` → `[1, 2, 'am', 'cest']`)
+- returns local, utc (gmt) and parsed time
 
 ## API
 
@@ -70,7 +70,7 @@ List of supported timezones in `<timezone>: <offset>`
 
 ## Related
 
-* [tizo-cli](https://github.com/maxrimue/tizo-cli) - CLI version of this module
+- [tizo-cli](https://github.com/maxrimue/tizo-cli) - CLI version of this module
 
 ## License
 
