@@ -32,5 +32,5 @@ export default {
   aedt: "+11",
   acst: ["+9", "30"],
   acdt: ["+10", "30"],
-  awst: ["+8"],
+  awst: "+8",
 };
