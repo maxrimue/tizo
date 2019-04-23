@@ -18,7 +18,7 @@ interface tizoResult {
 function getLocalOffset(): [number, number] {
   const tmpDate = new Date();
   tmpDate.setHours(0, 0);
-  tmpDate.setMinutes(tmpDate.getTimezoneOffset());
+  tmpDate.setMinutes(tmpDate.getMinutes() + tmpDate.getTimezoneOffset());
   return [tmpDate.getHours(), tmpDate.getMinutes()];
 }
 
@@ -31,12 +31,11 @@ function applyOffset(dateObj: Date, offset: number | [number, number]) {
   // And let's watch out for uneven offsets
   // (Looking at you, Australia)
   if (Array.isArray(offset)) {
-    dateObj.setHours(hours - Number(offset[0]), minutes - Number(offset[1]));
+    dateObj.setHours(hours - (Number(offset[0]) || 0));
+    dateObj.setMinutes(minutes - (Number(offset[1]) || 0));
   } else {
-    dateObj.setHours(hours - Number(offset), minutes);
+    dateObj.setHours(hours - Number(offset));
   }
-
-  return dateObj;
 }
 
 function converter(input: formattedTime): tizoResult {
@@ -73,8 +72,12 @@ function converter(input: formattedTime): tizoResult {
   const timeObj = new Date();
   timeObj.setHours(hours);
   timeObj.setMinutes(minutes);
-  const timeObjUTC = applyOffset(new Date(timeObj), offset);
-  const timeObjLocal = applyOffset(new Date(timeObjUTC), getLocalOffset());
+
+  const timeObjUTC = new Date(timeObj.getTime());
+  applyOffset(timeObjUTC, offset);
+
+  const timeObjLocal = new Date(timeObjUTC.getTime());
+  applyOffset(timeObjLocal, getLocalOffset());
 
   return {
     original: [timeObj.getHours(), timeObj.getMinutes()],

@@ -2,7 +2,10 @@ import test from "ava";
 import tizo from "./index";
 
 const localOffset = new Date().getTimezoneOffset();
-const addOffset = ([hours, minutes]: [number, number]): [number, number] => {
+const addOffset = (
+  [hours, minutes]: [number, number],
+  offset: number
+): [number, number] => {
   const tmpDate = new Date();
   tmpDate.setHours(hours);
   tmpDate.setMinutes(minutes - localOffset);
@@ -18,7 +21,7 @@ test("utc", t => {
 });
 
 test("local", t => {
-  t.deepEqual(tizo("19:30 AWST").local, addOffset([11, 30]));
+  t.deepEqual(tizo("19:30 AWST").local, addOffset([11, 30], localOffset));
 });
 
 test("complicated timezones", t => {
