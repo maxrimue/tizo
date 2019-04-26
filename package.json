@@ -22,7 +22,9 @@
   },
   "files": [
     "out/index.js",
-    "out/timezones.js"
+    "out/index.d.ts",
+    "out/timezones.js",
+    "out/timezones.d.ts"
   ],
   "keywords": [
     "timezone",
