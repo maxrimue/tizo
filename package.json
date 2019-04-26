@@ -1,6 +1,7 @@
 {
   "name": "tizo",
   "main": "out/index.js",
+  "types": "out/index.d.ts",
   "version": "2.0.0",
   "description": "easily parse a string including time and a timezone",
   "license": "MIT",
