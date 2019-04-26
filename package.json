@@ -15,8 +15,8 @@
     "node": ">=6"
   },
   "scripts": {
-    "prettier-fix": "prettier --write **/*.ts",
-    "test": "prettier --check **/*.ts && tsc && ava out/test.js",
+    "prettier-fix": "prettier --write *.ts",
+    "test": "prettier --check *.ts && tsc && ava out/test.js",
     "build": "tsc",
     "prepublish": "tsc"
   },
