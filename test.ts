@@ -46,3 +46,21 @@ test("am/pm", t => {
   t.deepEqual(tizo("11pm").utc, [23, 0]);
   t.deepEqual(tizo("12pm").utc, [12, 0]);
 });
+
+test("get input timezone", t => {
+  t.deepEqual(tizo("09 30 pt").inputTimezone, {
+    name: "Pacific Time",
+    offset: -8,
+  });
+});
+
+test("default input timezone", t => {
+  t.deepEqual(tizo("9").inputTimezone, {
+    name: "",
+    offset: 0,
+  });
+});
+
+test("throws if unrecognized timezone", t => {
+  t.throws(() => tizo("12 am ooooot"));
+});

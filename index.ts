@@ -1,4 +1,4 @@
-import timezones from "./timezones";
+import timezones, {timezonesType} from "./timezones";
 
 interface formattedTime {
   hours: number;
@@ -11,7 +11,8 @@ interface tizoResult {
   original: [number, number];
   utc: [number, number];
   local: [number, number];
-  timezones: any;
+  timezones: timezonesType;
+  inputTimezone: {offset: number | [number, number]; name: string};
 }
 
 /** Get Date()'s local offset and translate Date()'s answer from minutes to hours */
@@ -35,6 +36,20 @@ function applyOffset(dateObj: Date, offset: number | [number, number]) {
     dateObj.setMinutes(minutes - (Number(offset[1]) || 0));
   } else {
     dateObj.setHours(hours - Number(offset));
+  }
+}
+
+function fetchTimezone(
+  key: string
+): {offset: number | [number, number]; name: string} {
+  if (key === undefined) {
+    return {offset: 0, name: ""};
+  }
+
+  if (timezones[key]) {
+    return timezones[key];
+  } else {
+    throw new Error(`Timezone not found: ${key}`);
   }
 }
 
@@ -63,18 +78,14 @@ function converter(input: formattedTime): tizoResult {
   }
 
   const minutes = input.minutes;
-
-  let offset: number | [number, number];
-  if (timezones[input.timezone]) {
-    offset = timezones[input.timezone];
-  }
+  const inputTimezone = fetchTimezone(input.timezone);
 
   const timeObj = new Date();
   timeObj.setHours(hours);
   timeObj.setMinutes(minutes);
 
   const timeObjUTC = new Date(timeObj.getTime());
-  applyOffset(timeObjUTC, offset);
+  applyOffset(timeObjUTC, inputTimezone.offset);
 
   const timeObjLocal = new Date(timeObjUTC.getTime());
   applyOffset(timeObjLocal, getLocalOffset());
@@ -83,7 +94,8 @@ function converter(input: formattedTime): tizoResult {
     original: [timeObj.getHours(), timeObj.getMinutes()],
     utc: [timeObjUTC.getHours(), timeObjUTC.getMinutes()],
     local: [timeObjLocal.getHours(), timeObjLocal.getMinutes()],
-    timezones: timezones,
+    timezones,
+    inputTimezone,
   };
 }
 
@@ -100,7 +112,7 @@ export default (input: string): tizoResult => {
     hours: Number(formattedInputArr[1]),
     minutes: Number(formattedInputArr[2] || 0),
     amOrPm: formattedInputArr[3],
-    timezone: formattedInputArr[4] || "utc",
+    timezone: formattedInputArr[4],
   };
 
   if (
