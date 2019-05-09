@@ -11,7 +11,9 @@ $ npm install tizo
 ## Usage
 
 ```js
-const tizo = require("tizo");
+const tizo = require("tizo").default;
+// or
+import tizo from 'tizo';
 
 tizo("19:30 CEST").utc;
 // → '[ 17, 30 ]'
@@ -37,7 +39,7 @@ tizo("08:21").local;
 
 Type: `string`
 
-Any string containing at least a specific hour, and additionally minutes, and/or am/pm and/or timezone
+Any string containing at least a specific hour, and additionally minutes, and optionally am/pm and/or timezone
 
 #### returns
 
@@ -65,8 +67,12 @@ Local time in `[ hours, minutes ]`
 
 Type: `object`
 
-List of supported timezones in `<timezone>: <offset>`
-(Note: `<offset>` can either be a string or an array, depending on whether the offset is a fixed amount of hours or also includes minutes, like ACDT (+9:30))
+List of supported timezones in `<timezone key>: { offset: <offset>, name: <spelled out name> }`.
+See examples in the [timezones.ts](timezones.ts) file.
+
+- `timezone key`: abbreviated name of timezone, eg "cest"
+- `offset`: positive or negative integer or [integer, integer] representing the timezone's offset
+- `spelled out name`: full name of the timezone, eg "Central European Summer Time"
 
 ## Related
 
