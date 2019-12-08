@@ -18,7 +18,7 @@
     "prettier-fix": "prettier --write *.ts",
     "test": "prettier --check *.ts && tsc && ava out/test.js",
     "build": "tsc",
-    "prepublish": "tsc"
+    "prepare": "tsc"
   },
   "files": [
     "out/index.js",
@@ -39,8 +39,8 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "ava": "^2.1.0",
-    "prettier": "^1.16.4",
-    "typescript": "^3.3.3333"
+    "ava": "2.4.0",
+    "prettier": "1.19.1",
+    "typescript": "3.7.3"
   }
 }
