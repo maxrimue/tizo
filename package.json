@@ -21,10 +21,7 @@
     "prepare": "tsc"
   },
   "files": [
-    "out/index.js",
-    "out/index.d.ts",
-    "out/timezones.js",
-    "out/timezones.d.ts"
+    "out/"
   ],
   "keywords": [
     "timezone",
