@@ -1,9 +1,21 @@
-export interface timezonesType {
-  [timezone: string]: {offset: number | [number, number]; name: string};
+import {timezoneType} from "./types";
+
+export function fetchTimezone(
+  key: string
+): {offset: number | [number, number]; name: string} {
+  if (key === undefined) {
+    return {offset: 0, name: ""};
+  }
+
+  if (timezones[key]) {
+    return timezones[key];
+  } else {
+    throw new Error(`Timezone not found: ${key}`);
+  }
 }
 
 /** Get the offset of a timezone (key) in hours or [hours, minutes], and the name */
-const timezones: timezonesType = {
+export const timezones: timezoneType = {
   idlw: {offset: -12, name: "International Date Line West"},
   hast: {offset: -10, name: "Hawaii-Aleutian Standard Time"},
   hdt: {offset: -9, name: "Hawai Daylight Time"},
@@ -61,5 +73,3 @@ const timezones: timezonesType = {
   nzst: {offset: 12, name: "New Zealand Standard Time"},
   nzdt: {offset: 13, name: "New Zealand Daylight Time"},
 };
-
-export default timezones;
