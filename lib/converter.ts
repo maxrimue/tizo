@@ -50,14 +50,14 @@ export default (input: formattedTime): tizoResult => {
   }
 
   const minutes = input.minutes;
-  const inputTimezone = fetchTimezone(input.timezone);
+  const targetTimezone = fetchTimezone(input.targetTimezone);
 
   const timeObj = new Date();
   timeObj.setHours(hours);
   timeObj.setMinutes(minutes);
 
   const timeObjUTC = new Date(timeObj.getTime());
-  applyOffset(timeObjUTC, inputTimezone.offset);
+  applyOffset(timeObjUTC, targetTimezone.offset);
 
   const timeObjLocal = new Date(timeObjUTC.getTime());
   applyOffset(timeObjLocal, getLocalOffset());
@@ -67,6 +67,6 @@ export default (input: formattedTime): tizoResult => {
     utc: [timeObjUTC.getHours(), timeObjUTC.getMinutes()],
     local: [timeObjLocal.getHours(), timeObjLocal.getMinutes()],
     timezones,
-    inputTimezone,
+    targetTimezone,
   };
 };

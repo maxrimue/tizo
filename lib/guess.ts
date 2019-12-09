@@ -13,7 +13,7 @@ export default (input: string): formattedTime => {
     hours: Number(formattedInputArr[1]),
     minutes: Number(formattedInputArr[2] || 0),
     amOrPm: formattedInputArr[3],
-    timezone: formattedInputArr[4],
+    targetTimezone: formattedInputArr[4],
   };
 
   if (

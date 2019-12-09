@@ -48,14 +48,14 @@ test("am/pm", t => {
 });
 
 test("get input timezone", t => {
-  t.deepEqual(tizo.guess("09 30 pt").inputTimezone, {
+  t.deepEqual(tizo.guess("09 30 pt").targetTimezone, {
     name: "Pacific Time",
     offset: -8,
   });
 });
 
 test("default input timezone", t => {
-  t.deepEqual(tizo.guess("9").inputTimezone, {
+  t.deepEqual(tizo.guess("9").targetTimezone, {
     name: "",
     offset: 0,
   });
