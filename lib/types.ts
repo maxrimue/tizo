@@ -1,8 +1,8 @@
-export interface formattedTime {
+export interface tizoInput {
   hours: number;
   minutes: number;
   amOrPm: string;
-  targetTimezone: string;
+  sourceTimezone: string;
 }
 
 export interface tizoResult {
@@ -10,7 +10,7 @@ export interface tizoResult {
   utc: [number, number];
   local: [number, number];
   timezones: timezoneType;
-  targetTimezone: {offset: number | [number, number]; name: string};
+  sourceTimezone: {offset: number | [number, number]; name: string};
 }
 
 export interface timezoneType {

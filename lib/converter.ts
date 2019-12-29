@@ -1,4 +1,4 @@
-import {formattedTime, tizoResult} from "./types";
+import {tizoInput, tizoResult} from "./types";
 import {fetchTimezone, timezones} from "./timezones";
 
 /** Get Date()'s local offset and translate Date()'s answer from minutes to hours */
@@ -25,7 +25,7 @@ function applyOffset(dateObj: Date, offset: number | [number, number]) {
   }
 }
 
-export default (input: formattedTime): tizoResult => {
+export default (input: tizoInput): tizoResult => {
   let hours = 0;
 
   switch (input.amOrPm) {
@@ -50,14 +50,14 @@ export default (input: formattedTime): tizoResult => {
   }
 
   const minutes = input.minutes;
-  const targetTimezone = fetchTimezone(input.targetTimezone);
+  const sourceTimezone = fetchTimezone(input.sourceTimezone);
 
   const timeObj = new Date();
   timeObj.setHours(hours);
   timeObj.setMinutes(minutes);
 
   const timeObjUTC = new Date(timeObj.getTime());
-  applyOffset(timeObjUTC, targetTimezone.offset);
+  applyOffset(timeObjUTC, sourceTimezone.offset);
 
   const timeObjLocal = new Date(timeObjUTC.getTime());
   applyOffset(timeObjLocal, getLocalOffset());
@@ -67,6 +67,6 @@ export default (input: formattedTime): tizoResult => {
     utc: [timeObjUTC.getHours(), timeObjUTC.getMinutes()],
     local: [timeObjLocal.getHours(), timeObjLocal.getMinutes()],
     timezones,
-    targetTimezone,
+    sourceTimezone,
   };
 };

@@ -1,6 +1,7 @@
-import {formattedTime} from "./types";
+import {tizoInput} from "./types";
 
-export default (input: string): formattedTime => {
+/** Takes string and tries to parse its content (time and timezone) */
+export default (input: string): tizoInput => {
   if (typeof input !== "string") {
     throw new TypeError(`Expected a string, got ${typeof input}`);
   }
@@ -9,11 +10,11 @@ export default (input: string): formattedTime => {
 
   const formattedInputArr = input.toLowerCase().split(timeAnalyser); // Create array using pattern above ↑
 
-  const formattedInput: formattedTime = {
+  const formattedInput: tizoInput = {
     hours: Number(formattedInputArr[1]),
     minutes: Number(formattedInputArr[2] || 0),
     amOrPm: formattedInputArr[3],
-    targetTimezone: formattedInputArr[4],
+    sourceTimezone: formattedInputArr[4],
   };
 
   if (
